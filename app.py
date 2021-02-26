@@ -6,7 +6,6 @@
 import flask
 import werkzeug
 from flask import request
-#from werkzeug.contrib.fixers import ProxyFix
 from imutils.video import VideoStream
 import face_recognition
 import argparse
@@ -22,7 +21,7 @@ import datetime
 import config
 import json
 import os
-import pandas as pd
+
 from attendance import AttendanceMarker
 
 # constants 
@@ -300,22 +299,4 @@ def handle_request():
 
     return json_string
 
-@app.route('/postjson', methods = ['POST'])
-def postJsonHandler():
-    
-    content = request.get_json()
-    print('entered to update')
-
-    data = content['x']
-    df = pd.read_csv("attendance/attendance.csv")
-    for name in data:
-        
-        df.loc[df.Names==name,df.columns[-1]] = 1
-        df.to_csv("attendance/attendance.csv",index=False)
-
-    json_string = json.dumps(data)
-    return json_string
-
-#from werkzeug.middleware.proxy_fix import ProxyFix
-#app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 app.run(host="0.0.0.0", port=5000, debug=True)
