@@ -7,11 +7,9 @@
 4. Install Android Studio.
 
 # After installing the prerequesites, follow the steps
-1. Create a folder `mydatabase` which has several folders each having photos of a
-single person and the folder name being the identity (name) of that person. Check
-the sample `dataset3` folder in the repository.
-2.Create high level embeddings from these images using the deep learning model and store it in pickle file. To do this just run ` python encode_faces.py -e
-my_encodings.pickle -i mydatabase -d hog` . This will create a file called `my_encodings.pickle`. Details about other options are explained in the python script.
+1. Create a folder `mydatabase` which has several folders each having photos of a single person and the folder name being the identity (name) of that person. Check the sample `mydatabase` folder in the repository.
+2.Create high level embeddings from these images using the deep learning model and store it in pickle file. To do this just run 
+` python encode_faces.py -e my_encodings.pickle -i mydatabase -d hog` . This will create a file called `my_encodings.pickle`. Details about other options are explained in the python script.
 3. Open the project named GetAttendace in Android Studio. In mainactivity.java in connectServer method change the “postUrl” string to “http://ipv4address:5000/ “ or server url And in connectServer1 method change the “myurl1” string to “http://ipv4address:5001/ “ or server url
 4. Run the application with encoding file as an argument. `python app.py -e my_encodings.pickle -d hog` in terminal.
 5. Open another terminal and run toupdate.py 
